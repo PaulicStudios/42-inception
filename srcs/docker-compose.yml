@@ -4,3 +4,8 @@ services:
       context: ./requirements/nginx
     ports:
       - "80:80"
+  wordpress:
+    build:
+      context: ./requirements/wordpress
+    ports:
+      - "8080:80"
