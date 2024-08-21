@@ -2,4 +2,10 @@ FROM debian:bookworm
 
 RUN apt update && apt install -y mariadb-server
 
-CMD ["mysqld_safe"]
+RUN mkdir /run/mysqld && chown mysql:mysql /run/mysqld
+
+USER mysql
+
+COPY 50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
+
+CMD ["mysqld"]
