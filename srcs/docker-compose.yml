@@ -7,18 +7,18 @@ services:
       - "80:80"
     volumes:
       - ./volumes/web:/var/www/html
+    depends_on:
+      - wordpress
   wordpress:
     container_name: wordpress
     build:
       context: ./requirements/wordpress
-      # args:
-      #   WP_DB_NAME: ${WP_DB_NAME}
-      #   WP_DB_USER: ${WP_DB_USER}
-      #   WP_DB_USER_PASS: ${WP_DB_USER_PASS}
-      #   WP_ADMIN_USER: ${WP_ADMIN_USER}
-      #   WP_ADMIN_PASS: ${WP_ADMIN_PASS}
     volumes:
       - ./volumes/web:/var/www/html
+    depends_on:
+      - mariadb
+    env_file:
+      - .env
   mariadb:
     container_name: mariadb
     build:
