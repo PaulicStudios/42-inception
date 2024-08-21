@@ -11,11 +11,15 @@ services:
     container_name: wordpress
     build:
       context: ./requirements/wordpress
-    ports:
-      - "8080:80"
     volumes:
       - ./volumes/web:/var/www/html
   mariadb:
     container_name: mariadb
     build:
       context: ./requirements/mariadb
+      args:
+        WP_DB_NAME: ${WP_DB_NAME}
+        WP_DB_USER: ${WP_DB_USER}
+        WP_DB_USER_PASS: ${WP_DB_USER_PASS}
+    env_file:
+      - .env
