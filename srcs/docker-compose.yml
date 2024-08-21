@@ -11,6 +11,12 @@ services:
     container_name: wordpress
     build:
       context: ./requirements/wordpress
+      # args:
+      #   WP_DB_NAME: ${WP_DB_NAME}
+      #   WP_DB_USER: ${WP_DB_USER}
+      #   WP_DB_USER_PASS: ${WP_DB_USER_PASS}
+      #   WP_ADMIN_USER: ${WP_ADMIN_USER}
+      #   WP_ADMIN_PASS: ${WP_ADMIN_PASS}
     volumes:
       - ./volumes/web:/var/www/html
   mariadb:
@@ -23,3 +29,7 @@ services:
         WP_DB_USER_PASS: ${WP_DB_USER_PASS}
     env_file:
       - .env
+    healthcheck:
+            test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+            timeout: 20s
+            retries: 10
