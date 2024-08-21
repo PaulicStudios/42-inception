@@ -13,4 +13,5 @@ build:
 re: down clean build up
 
 clean:
-	echo "Todo: Cleaning all containers"
+	rm -rf ./srcs/volumes/mysql/*
+	rm -rf ./srcs/volumes/web/*

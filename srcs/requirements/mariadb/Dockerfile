@@ -13,9 +13,11 @@ COPY ./createInitSQL.sh .
 RUN sh createInitSQL.sh
 RUN cp init.sql /etc/mysql
 
+COPY start.sh .
+RUN chmod +x start.sh
 
 USER mysql
 
-COPY ./50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
+COPY 50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 
-CMD ["mysqld"]
+CMD ["./start.sh"]
