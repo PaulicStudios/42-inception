@@ -11,6 +11,7 @@ services:
       - wordpress
     networks:
       - default
+    restart: always
   wordpress:
     container_name: wordpress
     build:
@@ -23,6 +24,7 @@ services:
       - .env
     networks:
       - default
+    restart: always
   mariadb:
     container_name: mariadb
     build:
@@ -41,6 +43,7 @@ services:
       - default
     volumes:
       - ./volumes/mysql:/var/lib/mysql
+    restart: always
 
 networks:
   default:
