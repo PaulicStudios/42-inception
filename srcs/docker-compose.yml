@@ -5,9 +5,13 @@ services:
       context: ./requirements/nginx
     ports:
       - "80:80"
+    volumes:
+      - ./volumes/web:/var/www/html
   wordpress:
     container_name: wordpress
     build:
       context: ./requirements/wordpress
     ports:
       - "8080:80"
+    volumes:
+      - ./volumes/web:/var/www/html
