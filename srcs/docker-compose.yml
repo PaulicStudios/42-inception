@@ -15,3 +15,7 @@ services:
       - "8080:80"
     volumes:
       - ./volumes/web:/var/www/html
+  mariadb:
+    container_name: mariadb
+    build:
+      context: ./requirements/mariadb
