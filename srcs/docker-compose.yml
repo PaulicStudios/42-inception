@@ -5,8 +5,9 @@ services:
       context: ./requirements/nginx
     ports:
       - "80:80"
+      - "443:443"
     volumes:
-      - ./volumes/web:/var/www/html
+      - /home/pgrossma/data/web:/var/www/html
     depends_on:
       - wordpress
     networks:
@@ -17,7 +18,7 @@ services:
     build:
       context: ./requirements/wordpress
     volumes:
-      - ./volumes/web:/var/www/html
+      - /home/pgrossma/data/web:/var/www/html
     depends_on:
       - mariadb
     env_file:
@@ -42,7 +43,7 @@ services:
     networks:
       - default
     volumes:
-      - ./volumes/mysql:/var/lib/mysql
+      - /home/pgrossma/data/mysql:/var/lib/mysql
     restart: always
 
 networks:
