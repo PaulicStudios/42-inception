@@ -1,4 +1,6 @@
 up:
+	mkdir -p /home/pgrossma/data/web
+	mkdir -p /home/pgrossma/data/mysql
 	docker compose -f ./srcs/docker-compose.yml up
 
 upd:
@@ -13,5 +15,5 @@ build:
 re: down clean build up
 
 clean:
-	rm -rf ./srcs/volumes/mysql/*
-	rm -rf ./srcs/volumes/web/*
+	rm -rf /home/pgrossma/data/
+	docker system prune -a -f --volumes
