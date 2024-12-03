@@ -27,6 +27,12 @@ server {
 	# listen 443 ssl default_server;
 	# listen [::]:443 ssl default_server;
 	#
+	listen 443 ssl default_server;
+    listen [::]:443 ssl default_server;
+
+    # Path to your SSL certificate and key files
+    ssl_certificate /etc/ssl/certs/cert.crt;
+    ssl_certificate_key /etc/ssl/private/private.key;
 	# Note: You should disable gzip for SSL traffic.
 	# See: https://bugs.debian.org/773332
 	#
