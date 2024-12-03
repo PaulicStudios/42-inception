@@ -7,7 +7,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - /home/pgrossma/data/web:/var/www/html
+      - web_data:/var/www/html
     depends_on:
       - wordpress
     networks:
@@ -18,7 +18,7 @@ services:
     build:
       context: ./requirements/wordpress
     volumes:
-      - /home/pgrossma/data/web:/var/www/html
+      - web_data:/var/www/html
     depends_on:
       - mariadb
     env_file:
@@ -43,8 +43,22 @@ services:
     networks:
       - default
     volumes:
-      - /home/pgrossma/data/mysql:/var/lib/mysql
+      - mariadb_data:/var/lib/mysql
     restart: always
 
 networks:
   default:
+
+volumes:
+  web_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/pgrossma/data/web
+      o: bind
+  mariadb_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/pgrossma/data/mysql
+      o: bind
