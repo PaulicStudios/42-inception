@@ -19,16 +19,16 @@
 # Default server configuration
 #
 server {
-	listen 80 default_server;
-	listen [::]:80 default_server;
+	listen 80;
+	listen [::]:80;
 
 	# SSL configuration
 	#
 	# listen 443 ssl default_server;
 	# listen [::]:443 ssl default_server;
 	#
-	listen 443 ssl default_server;
-    listen [::]:443 ssl default_server;
+	listen 443 ssl;
+    listen [::]:443 ssl;
 
     # Path to your SSL certificate and key files
     ssl_certificate /etc/ssl/certs/cert.crt;
@@ -49,7 +49,7 @@ server {
 	# Add index.php to the list if you are using PHP
 	index index.html index.htm index.nginx-debian.html index.php;
 
-	server_name _;
+	server_name pgrossma.42.fr;
 
 	location / {
 		# First attempt to serve request as file, then
