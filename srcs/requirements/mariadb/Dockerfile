@@ -3,7 +3,6 @@ FROM debian:bullseye
 RUN apt update && apt install -y mariadb-server
 
 RUN mkdir /run/mysqld && chown mysql:mysql /run/mysqld
-RUN mkdir /var/lib/mysql && chown mysql:mysql /var/lib/mysql
 
 
 ARG WP_DB_NAME
